@@ -28,7 +28,7 @@ public class BrowserstackDriver implements WebDriverProvider {
 
         String platform = System.getProperty("platform", "android");
 
-        if (platform.equalsIgnoreCase("ios")) {
+        if ("ios".equals(platform)) {
             caps.setCapability("device", config.iosDevice());
             caps.setCapability("os_version", config.iosOsVersion());
             caps.setCapability("app", config.app());
