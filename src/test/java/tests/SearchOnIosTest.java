@@ -14,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 public class SearchOnIosTest extends TestBase {
 
 
-    @Tag("IOS")
+    @Tag("ios_browserstack")
     @Test
     void searchAppiumOnIosTest() {
         step("Type search", () -> {
@@ -29,7 +29,7 @@ public class SearchOnIosTest extends TestBase {
         });
     }
 
-    @Tag("IOS")
+    @Tag("ios_browserstack")
     @Test
     void searchSelenideOnIosTest() {
         step("Type search", () -> {

@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 
 public class SearchOnAndroidTests extends TestBase {
 
-    @Tag("Android")
+    @Tag("android_browserstack")
     @Test
     void searchAppiumTest() {
         step("Type search", () -> {
@@ -28,7 +28,7 @@ public class SearchOnAndroidTests extends TestBase {
         });
     }
 
-    @Tag("Android")
+    @Tag("android_browserstack")
     @Test
     void searchSelenideTest() {
         step("Type search", () -> {
