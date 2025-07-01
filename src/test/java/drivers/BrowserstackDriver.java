@@ -28,13 +28,13 @@ public class BrowserstackDriver implements WebDriverProvider {
 
         String platform = System.getProperty("platform", "android");
 
-        if ("ios".equals(platform)) {
-            caps.setCapability("device", config.iosDevice());
-            caps.setCapability("os_version", config.iosOsVersion());
-            caps.setCapability("app", config.app());
-        } else {
+        if ("android".equals(platform)) {
             caps.setCapability("device", config.androidDevice());
             caps.setCapability("os_version", config.androidOsVersion());
+            caps.setCapability("app", config.app());
+        } else {
+            caps.setCapability("device", config.iosDevice());
+            caps.setCapability("os_version", config.iosOsVersion());
             caps.setCapability("app", System.getProperty("app", config.app()));
         }
 
@@ -44,7 +44,7 @@ public class BrowserstackDriver implements WebDriverProvider {
 
         try {
             return new RemoteWebDriver(
-                    new URL("https://hub.browserstack.com/wd/hub"), caps);
+                    new URL(config.url()), caps);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
