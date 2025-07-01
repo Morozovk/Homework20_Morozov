@@ -1,5 +1,6 @@
 package tests.iosTest;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
@@ -14,6 +15,10 @@ import static io.qameta.allure.Allure.step;
 
 public class SearchOnIosTest extends TestBase {
 
+    @BeforeAll
+    static void setup() {
+        System.setProperty("platform", "ios");
+    }
 
     @Tag("ios_browserstack")
     @Test

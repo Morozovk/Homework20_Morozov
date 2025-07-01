@@ -1,5 +1,6 @@
 package tests.androidTest;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
@@ -13,6 +14,11 @@ import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
 
 public class SearchOnAndroidTests extends TestBase {
+
+    @BeforeAll
+    static void setup() {
+        System.setProperty("platform", "ios");
+    }
 
     @Tag("android_browserstack")
     @Test
