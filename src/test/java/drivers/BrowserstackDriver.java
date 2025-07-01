@@ -1,6 +1,8 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.BrowserstackConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -11,18 +13,30 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BrowserstackDriver implements WebDriverProvider {
+
+    private static final BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class);
+
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities caps = new MutableCapabilities();
 
-        caps.setCapability("browserstack.user", "bsuser_qMhg9y");
-        caps.setCapability("browserstack.key", "CAniBn2HqPmb4Ks6fxGL");
+        caps.setCapability("browserstack.user", config.user());
+        caps.setCapability("browserstack.key", config.key());
 
-        caps.setCapability("app", "bs://1bb42beb49de29f59bd2b394b41a732e932e7427");
+        caps.setCapability("app", config.app());
 
-        caps.setCapability("device", "Google Pixel 3");
-        caps.setCapability("os_version", "9.0");
+        String platform = System.getProperty("platform", "android");
+
+        if (platform.equalsIgnoreCase("ios")) {
+            caps.setCapability("device", config.iosDevice());
+            caps.setCapability("os_version", config.iosOsVersion());
+            caps.setCapability("app", config.app());
+        } else {
+            caps.setCapability("device", config.androidDevice());
+            caps.setCapability("os_version", config.androidOsVersion());
+            caps.setCapability("app", System.getProperty("app", config.app()));
+        }
 
         caps.setCapability("project", "First Java Project");
         caps.setCapability("build", "browserstack-build-1");
