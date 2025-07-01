@@ -13,6 +13,7 @@ import static io.qameta.allure.Allure.step;
 
 public class SearchOnIosTest extends TestBase {
 
+
     @Tag("IOS")
     @Test
     void searchAppiumOnIosTest() {
