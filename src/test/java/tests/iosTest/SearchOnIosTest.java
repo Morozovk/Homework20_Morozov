@@ -21,7 +21,7 @@ public class SearchOnIosTest extends TestBase {
     }
 
     @Test
-    void openSelenideTest() {
+    void searchSelenideTest() {
         step("Поиск Selenide", () -> {
             $(accessibilityId("Text Button")).click();
             $(accessibilityId("Text Input")).sendKeys("Selenide" + "\n");
