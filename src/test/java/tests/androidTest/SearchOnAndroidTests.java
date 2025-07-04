@@ -18,6 +18,7 @@ public class SearchOnAndroidTests extends TestBase {
     @BeforeAll
     static void setup() {
         System.setProperty("platform", "android");
+        System.setProperty("app", "bs://sample.app");
     }
 
     @Tag("android_browserstack")

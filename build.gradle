@@ -53,12 +53,18 @@ tasks.withType(Test) {
     }
 }
 
-    tasks.register('android_browserstack', Test) {
-        useJUnitPlatform()
-        systemProperty 'platform', 'android'
+tasks.register('android_browserstack', Test) {
+    useJUnitPlatform {
+        includeTags 'android_browserstack'
     }
+    systemProperty 'platform', 'android'
+    systemProperty 'deviceHost', 'browserstack'
+}
 
-    tasks.register('ios_browserstack', Test) {
-        useJUnitPlatform()
-        systemProperty 'platform', 'ios'
+tasks.register('ios_browserstack', Test) {
+    useJUnitPlatform {
+        includeTags 'ios_browserstack'
     }
+    systemProperty 'platform', 'ios'
+    systemProperty 'deviceHost', 'browserstack'
+}
